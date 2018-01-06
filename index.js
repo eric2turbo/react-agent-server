@@ -1,4 +1,4 @@
-module.exports = function ourLibrary(server, db, queries) {
+module.exports = function agent(server, db, queries) {
   const socketio = require('socket.io');
   const io = socketio(server);
   const Sequelize = require('sequelize');
