@@ -3,11 +3,13 @@ module.exports = function agent(server, db, queries) {
   const io = socketio(server);
   const Sequelize = require('sequelize');
   const chalk = require('chalk');
+  const Op = Sequelize.Op;
 
   const sequelize = new Sequelize(db.name, db.user, db.password, {
     dialect: db.dialect,
     host: db.host,
     port: db.port,
+    operatorsAliases: Op
   });
 
   const subscribedSockets = {};
