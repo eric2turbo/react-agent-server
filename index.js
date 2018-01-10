@@ -79,5 +79,11 @@ module.exports = function agent(server, db, queries) {
     socket.on('query', data => {
       handleQuery(data.key, data.values, socket);
     });
+
+    socket.on('disconnect', () => {
+      console.log(chalk.red('Client disconnected'));
+      var i = subscribedSockets.indexOf(socket);
+      subscribedSockets.splice(i, 1);
+    });
   });
 };
